@@ -9,3 +9,12 @@ export async function createPlayer(data: CreatePlayerInput) {
         }
     })
 }
+
+export async function findPlayerById(playerId: string) {
+    return await prisma.player.findUniqueOrThrow({
+        where: {
+            id: playerId,
+            deletedAt: null
+        }
+    })
+}
