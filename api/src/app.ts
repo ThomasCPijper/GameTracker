@@ -1,8 +1,8 @@
 import express from "express";
-import customerRouter from "./modules/customers/customers.controller";
+import playerRouter from "./modules/players/player.controller";
 
 const app = express();
 
-app.use(customerRouter);
+app.use('/api/v1/player', playerRouter);
 
 export default app;
