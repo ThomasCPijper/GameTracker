@@ -1,5 +1,5 @@
 import { prisma } from "../../shared/prisma";
-import { CreatePlayerInput } from "./player.schema";
+import { CreatePlayerInput, UpdatePlayerInput } from "./player.schema";
 
 export async function createPlayer(data: CreatePlayerInput) {
     return await prisma.player.create({
@@ -7,7 +7,7 @@ export async function createPlayer(data: CreatePlayerInput) {
             name: data.name,
             email: data.email
         }
-    })
+    });
 }
 
 export async function findPlayerById(playerId: string) {
@@ -16,5 +16,29 @@ export async function findPlayerById(playerId: string) {
             id: playerId,
             deletedAt: null
         }
-    })
+    });
+}
+
+export async function updatePlayer(id: string, data: UpdatePlayerInput) {
+    return await prisma.player.update({
+        where: {
+            id,
+            deletedAt: null
+        },
+        data: {
+            name: data.name
+        }
+    });
+}
+
+export async function deletePlayer(id: string) {
+    await prisma.player.update({
+        where: {
+            id,
+            deletedAt: { not: null }
+        },
+        data: {
+            deletedAt: new Date()
+        }
+    });
 }

@@ -10,3 +10,12 @@ export const baseSchema = z.object({
 });
 
 export type CreatePlayerInput = z.infer<typeof baseSchema>;
+
+export const updatePlayerSchema = baseSchema
+    .partial()
+    .refine((data) => Object.keys(data).length > 0, {
+        message: "At least one field must be provided",
+        path: []
+    });
+
+export type UpdatePlayerInput = z.infer<typeof updatePlayerSchema>;

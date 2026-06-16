@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { createPlayer, findPlayerById } from "./player.service";
+import { createPlayer, deletePlayer, findPlayerById, updatePlayer } from "./player.service";
 import { validateBody } from "../../middleware/validate.middleware";
-import { baseSchema } from "./player.schema";
+import { baseSchema, updatePlayerSchema } from "./player.schema";
 
 const playerRouter = Router()
 
-playerRouter.post('/', validateBody(baseSchema), (req, res) => {
-    const player = createPlayer(req.body);
+playerRouter.post('/', validateBody(baseSchema), async (req, res) => {
+    const player = await createPlayer(req.body);
 
     res.status(201).json({
         message: "Player created successfully",
@@ -14,9 +14,26 @@ playerRouter.post('/', validateBody(baseSchema), (req, res) => {
     });
 });
 
-playerRouter.get('/:id', (req, res) => {
-    const player = findPlayerById(req.params.id);
+playerRouter.get('/:id', async (req, res) => {
+    const player = await findPlayerById(req.params.id);
     res.status(200).json({ player })
+});
+
+playerRouter.patch('/:id', validateBody(updatePlayerSchema), async (req, res) => {
+    const player = await updatePlayer(req.params.id as string, req.body);
+
+    res.status(200).json({
+        message: "Player updated successfully",
+        player
+    });
+});
+
+playerRouter.delete('/:id', async (req, res) => {
+    await deletePlayer(req.params.id);
+
+    res.json({
+        message: "Player deleted succesfully"
+    });
 });
 
 export default playerRouter;
