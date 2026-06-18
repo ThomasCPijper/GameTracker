@@ -26,19 +26,20 @@ export async function updatePlayer(id: string, data: UpdatePlayerInput) {
             deletedAt: null
         },
         data: {
-            name: data.name
+            name: data.name,
+            email: data.email
         }
     });
 }
 
 export async function deletePlayer(id: string) {
-    await prisma.player.update({
-        where: {
-            id,
-            deletedAt: { not: null }
-        },
-        data: {
-            deletedAt: new Date()
-        }
-    });
+  return await prisma.player.update({
+    where: {
+      id,
+      deletedAt: null
+    },
+    data: {
+      deletedAt: new Date()
+    }
+  });
 }

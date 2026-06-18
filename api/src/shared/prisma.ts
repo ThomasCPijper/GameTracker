@@ -1,7 +1,7 @@
 import { Pool } from 'pg'
 import { PrismaPg } from '@prisma/adapter-pg';
 import { logger } from './logger';
-import { env } from '../../config/env';
+import { env } from '../config/env';
 import { Prisma, PrismaClient } from '../generated/prisma';
 
 type PrismaWithEvents = PrismaClient<Prisma.PrismaClientOptions, 'query' | 'warn' | 'error'>;
