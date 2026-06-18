@@ -8,17 +8,21 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "test": "npm run test"
+    "test": "cross-env NODE_ENV=test prisma migrate reset --force && cross-env NODE_ENV=test vitest",
+    "test:run": "cross-env NODE_ENV=test vitest run"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.9.3",
     "@types/pg": "^8.20.0",
+    "@types/supertest": "^7.2.0",
     "express": "^5.2.1",
     "prisma": "^7.8.0",
+    "supertest": "^7.2.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.22.4",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
