@@ -7,6 +7,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "postinstall": "prisma generate",
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
     "test": "cross-env NODE_ENV=test prisma migrate reset --force && cross-env NODE_ENV=test vitest",

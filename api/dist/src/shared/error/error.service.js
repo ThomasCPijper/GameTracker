@@ -4,7 +4,7 @@ exports.mapErrorToHttpResponse = mapErrorToHttpResponse;
 const zod_1 = require("zod");
 const env_1 = require("../../config/env");
 const logger_1 = require("../logger");
-const prisma_1 = require("../../generated/prisma");
+const client_1 = require("@prisma/client");
 function zodToPayload(error) {
     return {
         error: 'bad_request',
@@ -18,7 +18,7 @@ function mapErrorToHttpResponse(err, res) {
     if (err instanceof zod_1.ZodError) {
         return res.status(400).json(zodToPayload(err));
     }
-    if (err instanceof prisma_1.Prisma.PrismaClientKnownRequestError) {
+    if (err instanceof client_1.Prisma.PrismaClientKnownRequestError) {
         if (err.code === 'P2002') {
             return res.status(409).json({ message: 'Unique constraint violated' });
         }
@@ -29,17 +29,17 @@ function mapErrorToHttpResponse(err, res) {
             return res.status(503).json({ message: 'Database unavailable' });
         }
     }
-    if (err instanceof prisma_1.Prisma.PrismaClientInitializationError) {
+    if (err instanceof client_1.Prisma.PrismaClientInitializationError) {
         return res.status(503).json({
             message: 'Database connection failed',
         });
     }
-    if (err instanceof prisma_1.Prisma.PrismaClientUnknownRequestError) {
+    if (err instanceof client_1.Prisma.PrismaClientUnknownRequestError) {
         return res.status(500).json({
             message: 'Unknown database error',
         });
     }
-    if (err instanceof prisma_1.Prisma.PrismaClientRustPanicError) {
+    if (err instanceof client_1.Prisma.PrismaClientRustPanicError) {
         return res.status(500).json({
             message: 'Database client crashed',
         });
