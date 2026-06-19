@@ -2,7 +2,7 @@ import type { Response } from 'express';
 import { ZodError } from 'zod';
 import { env } from '../../config/env';
 import { logger } from '../logger';
-import { Prisma } from '../../generated/prisma';
+import { Prisma } from '@prisma/client';
 
 function zodToPayload(error: ZodError) {
   return {
