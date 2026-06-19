@@ -10,7 +10,7 @@ dotenv.config({
 
 const envSchema = z.object({
     // Server
-    NODE_ENV: z.enum(['development', 'production', 'test']),
+    NODE_ENV: z.enum(['development', 'production', 'test']).default('production'),
     PLATFORM: z.string().default(process.platform),
     PORT: z.coerce.number().default(3000),
     DATABASE_URL: z.string().min(1),
