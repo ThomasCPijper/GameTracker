@@ -1,0 +1,24 @@
+<div class="topbar-container">
+    <div class="title">
+        <h4>
+            GameTracker
+        </h4>
+    </div>
+    <div class="profile">
+        @if (auth.user$ | async; as user) {
+            <a
+  class="d-flex align-items-center justify-content-center rounded-circle bg-white shadow-sm text-decoration-none"
+  [routerLink]="'/profile'"
+  style="width: 52px; height: 52px;"
+>
+  <img
+    [src]="user.picture"
+    [alt]="user.name"
+    class="rounded-circle"
+    width="44"
+    height="44"
+  >
+</a>
+        }
+    </div>
+</div>

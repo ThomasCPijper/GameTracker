@@ -1,0 +1,9 @@
+.topbar-container {
+    width: 96vw;
+    margin: 0 2vw;
+    height: 4rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

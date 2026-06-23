@@ -1,0 +1,22 @@
+.button {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+
+    padding: .75rem 1rem;
+
+    border-radius: 12px;
+    text-decoration: none;
+    color: #232629;
+
+    transition: all .1s ease;
+}
+
+.button:hover {
+    background-color: rgba(0,0,0,.04);
+}
+
+.active {
+    background-color: white;
+    box-shadow: rgba(0,0,0,.08) 0 2px 4px;
+}

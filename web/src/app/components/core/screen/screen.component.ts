@@ -1,10 +1,11 @@
 import { booleanAttribute, Component, Input } from '@angular/core';
 import { NavbarComponent } from '../nav/navbar/navbar.component';
+import { TopbarComponent } from '../nav/topbar/topbar.component';
 
 @Component({
   selector: 'app-screen',
   standalone: true,
-  imports: [NavbarComponent],
+  imports: [NavbarComponent, TopbarComponent],
   templateUrl: './screen.component.html',
   styleUrl: './screen.component.css'
 })

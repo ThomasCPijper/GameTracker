@@ -1,8 +1,13 @@
 <div class="screen-container">
-  @if(navbar){
-    <app-navbar/>
-  }
-  <div class="screen">
-    <ng-content></ng-content>
+  <div class="top">
+    <app-topbar></app-topbar>
+  </div>
+  <div class="bottom">
+    @if(navbar){
+      <app-navbar/>
+    }
+    <div class="screen">
+      <ng-content></ng-content>
+    </div>
   </div>
 </div>
