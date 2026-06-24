@@ -1,0 +1,44 @@
+<app-screen>
+    <div class="container">
+        <div class="top">
+            <div class="profile-overview">
+                @if (auth.user$ | async; as user) {
+                    <img
+                        [src]="user.picture || 'https://i.pravatar.cc/150'"
+                        [alt]="user.name"
+                        class="avatar"
+                    >
+
+                    <div class="profile-text">
+                        <h5 class="name">{{ user.name }}</h5>
+
+                        <div class="email-row">
+                            <p class="info">{{ user.email }}</p>
+
+                            @if (user.email_verified) {
+                                <div class="icon-wrapper verified">
+                                Verified
+                                </div>
+                            } @else {
+                                <div class="icon-wrapper unverified">
+                                Not verified
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                </div>
+            <div class="actions">
+                <button class="logout" (click)="logout()">Logout</button>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="games-present">
+
+            </div>
+            <div class="about-me">
+                
+            </div>
+        </div>
+    </div>
+</app-screen>

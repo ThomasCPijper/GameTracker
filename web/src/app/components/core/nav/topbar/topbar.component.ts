@@ -6,7 +6,7 @@ import { AuthService } from '@auth0/auth0-angular';
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.css'
 })

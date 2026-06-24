@@ -5,7 +5,8 @@ export async function createPlayer(data: CreatePlayerInput) {
     return await prisma.player.create({
         data: {
             name: data.name,
-            email: data.email
+            email: data.email,
+            auth0id: data.auth0id
         }
     });
 }

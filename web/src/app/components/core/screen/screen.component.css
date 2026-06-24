@@ -8,3 +8,13 @@
   padding: 0.5rem;
   box-sizing: border-box;
 }
+
+.bottom {
+  display: flex;
+  flex: 1;
+}
+
+.screen {
+  flex: 1;
+  margin: 1rem;
+}

@@ -14,8 +14,9 @@ datasource db {
 
 model Player { 
   id    String  @id   @default(uuid())
-  name  String
-  email String
+  name  String?
+  email String @unique
+  auth0id String @unique
 
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
