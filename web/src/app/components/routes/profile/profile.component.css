@@ -1,3 +1,9 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .profile-overview {
   display: flex;
   flex-direction: row;
@@ -78,4 +84,19 @@
   cursor: pointer;
 
   transition: all 0.2s ease;
+}
+
+.bottom {
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+    margin: 10px 0;
+}
+
+.games-present {
+    flex: 3;
+}
+
+.about-me {
+    flex: 1;
 }
